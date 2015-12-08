@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link rel="stylesheet" href="../../bower_components/cdn-release-master/build/styles/monokai-sublime.min.css"/>
+<style>
+    h1{
+        text-align: center;
+    }
+    pre{
+        margin: 0;
+        font-size: 16px;
+        margin-left: -125px;
+    }
+    .demo{
+        margin: 50px 0;
+        overflow: hidden;
+    }
+    .lf{
+        width: 30%;
+        float: left;
+    }
+    .rt{
+        margin: 20px 0 0 1%;
+        float: left;
+        width: 69%;
+    }
+    .container{
+        border: 1px solid #ff8c2e;
+        display: block;
+    }
+    .content1{
+        background-color: #ff8c2e;
+        width: 200px;
+        height: 220px;
+        margin: auto;
+    }
+    .content2{
+        background-color: #ff8c2e;
+        display: table;
+        margin: auto;
+    }
+    .container3{
+        text-align: center;
+    }
+    .content3{
+        background-color: #ff8c2e;
+        display: inline-block;
+    }
+    .container4{
+        position: relative;
+        height: 200px;
+    }
+    .content4{
+        background-color: #ff8c2e;
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+    }
+    .container5{
+        position: relative;
+        height: 200px;
+    }
+    .content5{
+        background-color: #ff8c2e;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .container6{
+        display: flex;
+        justify-content: center;
+    }
+    .content6{
+        background-color: #ff8c2e;
+    }
+</style>
+<body>
+    <div class="demo">
+        <h1>block + margin:auto 宽度固定 水平居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            display: block;
+                        }
+                        .content1{
+                            background-color: #ff8c2e;
+                            width: 200px;
+                            height: 200px;
+                            margin: auto;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container">
+                    <div class="content1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo">
+        <h1>table + margin:auto 宽度自适应 水平居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            display: block;
+                        }
+                        .content2{
+                            background-color: #ff8c2e;
+                            display: table;
+                            // 否则 inline/inline-block 都是 宽度自适应，
+                            // 但是margin:auto无效
+                            // dispaly:table ie6/7不支持，要用标签代替
+                            margin: auto;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container3">
+                    <div class="content2">
+                        <p>xxxxxxxx</p>
+                        <p>宽度自适应</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="demo">
+        <h1>inline-block + text-align 宽度自适应 水平居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            display: block;
+                            text-align: center;
+                        }
+                        .content3{
+                            background-color: #ff8c2e;
+                            display: inline-block;
+                            //inline也可以，但是内部只是能行内元素(包括inline-block),不能是块级元素，
+                            //否则块级元素溢出改行内元素
+                            //ie6/7不支持 inline-block 但是可以通关inline + zoom:1代替
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container3">
+                    <div class="content3">
+                        <div>dddddddddddddddddddddd</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="demo">
+        <h1> absolute + margin-left:负数 宽度固定 水平居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            position: relative;
+                            height: 200px;
+                            //因为绝对定位脱离文档流，故父元素要有高度才能包裹
+                        }
+                        .content4{
+                            background-color: #ff8c2e;
+                            width: 200px;
+                            position: absolute;
+                            left: 50%;
+                            margin-left: -100px;
+                        }
+
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container4">
+                    <div class="content4">
+                        ddddddddddddd
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="demo">
+        <h1> absolute + transform: translateX(-50%) 宽度自适应 水平居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            position: relative;
+                            height: 200px;
+                            //因为绝对定位脱离文档流，故父元素要有高度才能包裹
+                        }
+                        .content4{
+                            background-color: #ff8c2e;
+                            position: absolute;
+                            //绝对定位元素还有个特点，会包裹，自适应大小
+                            left: 50%;
+                            transform: translateX(-50%);
+                            // IE9>=才支持
+                        }
+
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container5">
+                    <div class="content5">
+                        ddddddddddddd
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="demo">
+        <h1> flex + justify-content 宽度自适应 水平居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            display: flex;
+                            justify-content: center;
+                            //两个属性都是定义在伸缩容器上
+                            // IE9/10才支持，并且部分浏览器要-webkit- -ms-开头
+                        }
+                        .content4{
+                            background-color: #ff8c2e;
+                            //margin: auto 可以代替父元素中的justify-content:center
+                        }
+
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container6">
+                    <div class="content6">
+                        ddddddddddddd
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="../../bower_components/jquery/dist/jquery.js"></script>
+<script src="../../bower_components/cdn-release-master/build/highlight.min.js"></script>
+<script src=""></script>
+<script>
+    $(document).ready(function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<script src="//localhost:35729/livereload.js"></script>
+</html>
