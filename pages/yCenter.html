@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link rel="stylesheet" href="../../bower_components/highlight/build/styles/monokai-sublime.min.css"/>
+<style>
+    h1{
+        text-align: center;
+    }
+    pre{
+        margin: 0;
+        font-size: 16px;
+        margin-left: -125px;
+    }
+    .demo{
+        margin: 50px 0;
+        overflow: hidden;
+    }
+    .lf{
+        width: 30%;
+        float: left;
+    }
+    .rt{
+        margin: 20px 0 0 1%;
+        float: left;
+        width: 69%;
+    }
+    .container{
+        border: 1px solid #ff8c2e;
+        display: block;
+    }
+</style>
+<body>
+    <div class="demo">
+        <h1>block + margin:auto 宽度固定 水平居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            display: block;
+                        }
+                        .content1{
+                            background-color: #ff8c2e;
+                            width: 200px;
+                            height: 200px;
+                            margin: auto;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container">
+                    <div class="content1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../bower_components/jquery/dist/jquery.js"></script>
+<script src="../../bower_components/highlight/build/highlight.min.js"></script>
+<script src=""></script>
+<script>
+    $(document).ready(function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<script src="//localhost:35729/livereload.js"></script>
+</html>

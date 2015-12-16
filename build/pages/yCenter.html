@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link rel="stylesheet" href="../../bower_components/highlight/build/styles/monokai-sublime.min.css"/>
+<style>
+    h1{
+        text-align: center;
+    }
+    pre{
+        margin: 0;
+        font-size: 16px;
+        margin-left: -125px;
+    }
+    img{
+        width: 45px;
+        height: 35px;
+    }
+    .demo{
+        margin: 50px 0;
+        overflow: hidden;
+    }
+    .lf{
+        width: 30%;
+        float: left;
+    }
+    .rt{
+        margin: 20px 0 0 1%;
+        float: left;
+        width: 69%;
+    }
+    .container{
+        border: 1px solid #ff8c2e;
+        height: 100px;
+        width: 200px;
+    }
+    .container0{
+           line-height: 100px;
+       }
+    .content0{
+        background-color: green;
+        display: inline;
+    }
+    .container1{
+         line-height: 100px;
+     }
+    .container1 img{
+        vertical-align: middle;
+    }
+    .content1{
+        background-color: green;
+        display: inline;
+    }
+    .container2{
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .content2{
+        background-color: green;
+        display: inline-block;
+    }
+    .container3{
+        position: relative;
+    }
+    .content3{
+        position: absolute;
+        top: 50%;
+        margin-top: -17.5px;
+        width: 45px;
+        height: 35px;
+    }
+    .container4{
+        position: relative;
+    }
+    .content4{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        background-color: green;
+    }
+    .container5{
+        display: flex;
+        align-items: center;
+    }
+    .content5{
+        width: 45px;
+        height: 45px;
+        background-color: green;
+    }
+    .content6{
+        margin-top: 28px;
+        width: 45px;
+        height: 45px;
+        background-color: green;
+
+    }
+    .content7{
+        position: relative;
+        top: 28px;
+        width: 45px;
+        height: 45px;
+        background-color: green;
+
+    }
+    </style>
+<body>
+    <div class="demo">
+    <h1> line-height  内部元素非固定高度 垂直居中</h1>
+    <div>
+        <div class="lf">
+                    <pre>
+                        <code class="css">
+                            .container{
+                                border: 1px solid #ff8c2e;
+                                height: 100px;
+                                width: 200px;
+                                line-height:100px;//只对于inline元素(包括图片行内元素+文本)有效，对inline-block也无效！，区别vertival-align在table-cell中对块级元素都有作用
+                                // 会继承！内部元素的行高都会变
+                            }
+                            .content{
+                                background-color: green;
+                                display: inline; //必须是inline元素
+                            }
+                        </code>
+                    </pre>
+        </div>
+        <div class="rt">
+            <div class="container container0">
+                <div class="content0">元素里面</div>
+                <img src="http://www.lagou.com/upload/webproduct/03c383bc2b184f30887f276240c583f0.png" alt=""/>
+                元素外面
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="demo">
+        <h1> line-height  内部元素非固定高度 垂直居中  + 让图片和文字垂直居中！！</h1>
+        <div>
+            <div class="lf">
+                    <pre>
+                        <code class="css">
+                            .container{
+                            border: 1px solid #ff8c2e;
+                            height: 100px;
+                            width: 200px;
+                            line-height:100px;//只对于inline元素(包括图片行内元素+文本)有效，对inline-block也无效！，区别vertival-align在table-cell中对块级元素都有作用
+                            // 会继承！内部元素的行高都会变
+                            }
+                            .content{
+                            background-color: green;
+                            display: inline; //必须是inline元素
+                            }
+                            img{
+                                vertical-align: middle; //注意！必须作用到img上，作用父元素或者文字上不起作用。
+                                                        // vertical-algin 不会继承，line-height会继承！
+                                                        // 神奇发生了，此时图片会下移动，达到与文字中央，（文字不会动）
+                            }
+                        </code>
+                    </pre>
+            </div>
+            <div class="rt">
+                <div class="container container1">
+                    <div class="content1">元素里面</div>
+                    <img src="http://www.lagou.com/upload/webproduct/03c383bc2b184f30887f276240c583f0.png" alt=""/>
+                    元素外面
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo">
+        <h1> dispaly:table-cell + vertical-align：middle 内部元素非固定高度 垂直居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            height: 100px;
+                            width: 200px;
+                            display: table-cell; //仍然块级特性 + vertical-align 起作用,无论内部是什么元素，即使是块级元素
+                            vertical-align: middle; // 设置内部元素或者文字的位置
+                        }
+                        .content{
+                            background-color: green;
+                            display: inline-block; //（块级元素也能垂直居中） 这里是为了让后面的文字不换行，否则是两个元素整体的垂直居中
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container2">
+                    <div class="content2">元素里面</div>
+                    <img src="http://www.lagou.com/upload/webproduct/03c383bc2b184f30887f276240c583f0.png" alt=""/>
+                    元素外面
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo">
+        <h1> absolute:top 50% +  margin-top:-xxpx 内部元素固定高度 垂直居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            height: 100px;
+                            width: 200px;
+                            position: relative;
+                        }
+                        .content{
+                            position: absolute; // 可以作用于任何元素，包括inline元素，如span
+                            top: 50%;
+                            margin-top: -17.5px;
+                            width: 45px;
+                            height: 35px;// 元素内容无（除非元素时图片），必须设置元素宽高才会显示，如果内部有文字，文字垂直居中还是按照其他方式才行
+
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container3">
+                    <img  class="content3" src="http://www.lagou.com/upload/webproduct/03c383bc2b184f30887f276240c583f0.png" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="demo">
+        <h1> absolute:top 50% +  transform: translateY(-50%) 内部元素非固定高度 垂直居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+                        .container{
+                            border: 1px solid #ff8c2e;
+                            height: 100px;
+                            width: 200px;
+                            position: relative;
+                        }
+                        .content{
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);// ie9>=才可以兼容
+                            width: 45px;
+                            height: 45px;
+                            background-color: green;
+                        }
+
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container4">
+                    <div class="content4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo">
+        <h1> position:flex  + align-item:center 内部元素非固定高度 垂直居中</h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+
+                        .container{
+                            display: flex;//ie9才支持
+                            align-items: center; //都作用在父元素（伸缩容器），水平是justify-content:center
+                        }
+                        .content{
+                            width: 45px;
+                            height: 45px;
+                            background-color: green;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container5">
+                    <div class="content5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo">
+        <h1> 也是最简单有效但个性参数要求高的方式，同设置margin/padding 设置成具体值 移动元素 达到垂直居中
+             适合内部元素固定高度,外部元素也固定高度
+        </h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+
+                        .container{
+                             height: 100px; //父元素高求高度已知
+                        }
+                        .content{
+                            margin-top: (100-45)/2px;
+                            width: 45px;
+                            height: 45px; //本元素高求高度也已知
+                            background-color: green;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container6">
+                    <div class="content6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo">
+        <h1> 也是最简单有效但个性参数要求高的方式，同设置display:relative 设置成具体值 移动元素 达到垂直居中
+            适合内部元素固定高度,外部元素也固定高度
+        </h1>
+        <div>
+            <div class="lf">
+                <pre>
+                    <code class="css">
+
+                        .container{
+                            height: 100px; //父元素高求高度已知
+                        }
+                        .content{
+                            position: relative;
+                            top: (100-45)/2px;
+                            width: 45px;
+                            height: 45px; //本元素高求高度页也已知
+                            background-color: green;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="rt">
+                <div class="container container7">
+                    <div class="content7"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../bower_components/jquery/dist/jquery.js"></script>
+<script src="../../bower_components/highlight/build/highlight.min.js"></script>
+<script src=""></script>
+<script>
+    $(document).ready(function(){
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+<script src="//localhost:35729/livereload.js"></script>
+</html>
