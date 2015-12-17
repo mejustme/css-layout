@@ -188,6 +188,9 @@
                             display: table-cell; //仍然块级特性 + vertical-align 起作用,无论内部是什么元素，即使是块级元素
                             vertical-align: middle; // 必须定义在父元素为inline、table-cell元素上，对内部的任何元素都其作用）
                             // 还有一种用法，定义在img元素上，其作用也是对元素本身，它本身向下移动，与文本居中对齐
+                            //注意！ 此方式，父元素不能是脱离文档流 如 position:absolute float
+                            // 注意relative不脱离文档流，原来位置也还在，但是属于定位元素，z-index只能作用在定位元素（absolute+relative+fixed）
+                            // float 虽然也是脱离文档流的，但是z-index不能起作用
                         }
                         .content{
                             background-color: green;
