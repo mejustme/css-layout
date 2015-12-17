@@ -146,20 +146,21 @@
                     <pre>
                         <code class="css">
                             .container{
-                            border: 1px solid #ff8c2e;
-                            height: 100px;
-                            width: 200px;
-                            line-height:100px;//只对于inline元素(包括图片行内元素+文本)有效，对inline-block也无效！，区别vertival-align在table-cell中对块级元素都有作用
-                            // 会继承！内部元素的行高都会变
+                                border: 1px solid #ff8c2e;
+                                height: 100px;
+                                width: 200px;
+                                line-height:100px;//只对内部的于inline元素(包括图片行内元素+文本)有效，对内部inline-block也无效！，区别vertival-align在table-cell中对块级元素都有作用
+                                // 会继承！内部元素的行高都会变
                             }
                             .content{
-                            background-color: green;
-                            display: inline; //必须是inline元素
+                                background-color: green;
+                                display: inline; //必须是inline元素
                             }
                             img{
-                                vertical-align: middle; //注意！必须作用到img上，作用父元素或者文字上不起作用。
-                                                        // vertical-algin 不会继承，line-height会继承！
-                                                        // 神奇发生了，此时图片会下移动，达到与文字中央，（文字不会动）
+                                vertical-align: middle; //注意 vertical-aligin特殊作用，定义在本身，作用也发挥在本身。
+                                // 一般用法 必须定义在父元素为inline、table-cell元素上，对内部的任何元素都其作用
+                                // vertical-algin 不会继承，line-height会继承！
+                                // 神奇发生了，此时图片会下移动，达到与文字中央，（文字不会动）
                             }
                         </code>
                     </pre>
@@ -185,7 +186,8 @@
                             height: 100px;
                             width: 200px;
                             display: table-cell; //仍然块级特性 + vertical-align 起作用,无论内部是什么元素，即使是块级元素
-                            vertical-align: middle; // 设置内部元素或者文字的位置
+                            vertical-align: middle; // 必须定义在父元素为inline、table-cell元素上，对内部的任何元素都其作用）
+                            // 还有一种用法，定义在img元素上，其作用也是对元素本身，它本身向下移动，与文本居中对齐
                         }
                         .content{
                             background-color: green;
